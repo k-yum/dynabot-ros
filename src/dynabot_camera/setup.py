@@ -20,6 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            "lane_detection = dynabot_camera.lane_detection:main",
+            "lane_detection2 = dynabot_camera.lane_detection2:main"
         ],
     },
 )
