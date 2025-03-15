@@ -1,0 +1,6 @@
+# Ignore build artifacts
+
+/build/
+/install/
+/log/
+/*.log
