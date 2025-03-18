@@ -270,4 +270,83 @@
     </link>
 
 
+    <!--GPS HOLDER + LIGHTS-->
+    <joint name="gps_holder_joint" type="fixed">
+        <parent link="top_frame" />
+        <child link="gps_holder_link" />
+        <origin xyz="0.29 0 0.1524" />
+    </joint>
+
+    <link name="gps_holder_link">
+        <visual>
+            <origin xyz="0 0 0.2525" />
+            <geometry>
+                <cylinder radius="0.030" length="0.505" />
+            </geometry>
+            <material name="white" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0.2525" />
+            <geometry>
+                <cylinder radius="0.030" length="0.505" />
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="0.34" length="0.505" radius="0.030">
+            <origin xyz="0 0 0.2525" rpy="0 0 0" />
+        </xacro:inertial_cylinder>
+    </link>
+
+
+    <!--GPS-->
+    <joint name="gps_joint" type="fixed">
+        <parent link="gps_holder_link" />
+        <child link="gps_link" />
+        <origin xyz="0 0 0.505" />
+    </joint>
+
+    <link name="gps_link">
+        <visual>
+            <origin xyz="-0 0 0" />
+            <geometry>
+                <box size="0.150 0.150 0.050" />
+            </geometry>
+            <material name="red" />
+        </visual>
+        <collision>
+            <origin xyz="-0 0 0" />
+            <geometry>
+                <box size="0.150 0.150 0.050"  />
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="0.13" x="0.150" y="0.150" z="0.050">
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </xacro:inertial_box>
+    </link>
+
+    <!--IMU-->
+    <joint name="imu_joint" type="fixed">
+        <parent link="bottom_frame" />
+        <child link="imu_link" />
+        <origin xyz="0.658 0 0.2858" />
+    </joint>
+
+    <link name="imu_link">
+        <visual>
+            <origin xyz="0 0 0" />
+            <geometry>
+                <box size="0.01 0.01 0.007" />
+            </geometry>
+            <material name="red" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" />
+            <geometry>
+                <box size="0.01 0.01 0.007"  />
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="0.13" x="0.01" y="0.01" z="0.007">
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </xacro:inertial_box>
+    </link>
+
 </robot>
