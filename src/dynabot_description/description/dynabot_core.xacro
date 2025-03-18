@@ -219,11 +219,11 @@
     <!--LIDAR-->
     <joint name="laser_joint" type="fixed">
         <parent link="bottom_frame" />
-        <child link="laser_link" />
+        <child link="laser" />
         <origin xyz="0.73915 0 0.1336" />
     </joint>
 
-    <link name="laser_link">
+    <link name="laser">
         <visual>
             <origin xyz="-0.039775 0 -0.03715" />
             <geometry>

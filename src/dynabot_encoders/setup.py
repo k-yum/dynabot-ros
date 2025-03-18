@@ -20,7 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            "odom = dynabot_encoders.odom:main"
+            "odom = dynabot_encoders.odom:main",
+            "reset_encoders = dynabot_encoders.reset_encoders:main"
         ],
     },
 )
