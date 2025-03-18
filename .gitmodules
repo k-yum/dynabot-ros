@@ -1,0 +1,4 @@
+[submodule "src/vectornav"]
+	path = src/vectornav
+	url = https://github.com/axel-ben/vectornav.git
+	branch = ros2
