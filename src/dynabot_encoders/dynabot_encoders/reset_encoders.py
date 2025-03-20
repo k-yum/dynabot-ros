@@ -1,35 +1,23 @@
 #!/usr/bin/env python3
-import rclpy
-from rclpy.node import Node
-from std_msgs.msg import Empty
-from rclpy.qos import QoSProfile, DurabilityPolicy
+import subprocess
+import time
 
-class ResetEncodersNode(Node):
-    def __init__(self):
-        super().__init__('reset_encoders_node')
-        # Setup QoS to mimic "latching" in ROS1 (transient local durability)
-        qos_profile = QoSProfile(depth=10)
-        qos_profile.durability = DurabilityPolicy.TRANSIENT_LOCAL
-        
-        # Create the publisher with the custom QoS settings
-        self.publisher = self.create_publisher(Empty, '/reset_encoders', qos_profile)
-        
-        # Create a timer that waits 3 seconds before publishing the message
-        self.timer = self.create_timer(3.0, self.publish_message)
+def flash_teensy():
+    # Path to your compiled HEX file
+    hex_file = "/home/igv/.cache/arduino/sketches/F1B23A3F4F21A06D93A0EF14DE4A65AD/encoder_count.ino.hex"
+    # Specify the MCU type for your Teensy board (adjust --mcu value as needed)
+    cmd = ["teensy_loader_cli", "--mcu=imxrt1062", "-w", "-v", hex_file]
+    try:
+        # Run the command and wait for it to complete
+        subprocess.run(cmd, check=True)
+        print("Teensy flashed successfully.")
+    except subprocess.CalledProcessError as e:
+        print("Error flashing Teensy:", e)
 
-    def publish_message(self):
-        msg = Empty()
-        self.publisher.publish(msg)
-        self.get_logger().info("Published reset message to /reset_encoders. Shutting down.")
-        # Shutdown the node after publishing
-        rclpy.shutdown()
-
-def main(args=None):
-    rclpy.init(args=args)
-    node = ResetEncodersNode()
-    rclpy.spin(node)
-    node.destroy_node()
-    rclpy.shutdown()
+def main():
+    # Optional: wait a bit if needed (e.g., for the micro-ROS agent to initialize)
+    time.sleep(3)
+    flash_teensy()
 
 if __name__ == '__main__':
     main()
