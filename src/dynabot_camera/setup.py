@@ -21,7 +21,8 @@ setup(
     entry_points={
         'console_scripts': [
             "lane_detection = dynabot_camera.lane_detection:main",
-            "lane_detection2 = dynabot_camera.lane_detection2:main"
+            "lane_detection2 = dynabot_camera.lane_detection2:main",
+            "lane_detection3 = dynabot_camera.lane_detection3:main"
         ],
     },
 )
