@@ -2,5 +2,6 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="dynabot">
 
     <xacro:include filename="dynabot_core.xacro" />
+    <xacro:include filename="dynabot_lidar.xacro" />
 
 </robot>
