@@ -327,7 +327,7 @@
 
     
     <!--SIMULATED ODOMETRY-->
-    <gazebo>
+    <!-- <gazebo>
         <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
             <ros>
                 <namespace>/</namespace>
@@ -353,7 +353,7 @@
             <odometry_frame>odom</odometry_frame>
             <robot_base_frame>base_link</robot_base_frame>
         </plugin>
-    </gazebo>
+    </gazebo> -->   
      
 
 </robot>

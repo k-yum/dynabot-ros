@@ -1,0 +1,30 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/axel/dynabot-ros/install/vectornav_msgs/local/lib/python3.10/dist-packages",
+        "/home/axel/dynabot-ros/install/motor_test/lib/python3.10/site-packages",
+        "/home/axel/dynabot-ros/install/motor_control/lib/python3.10/site-packages",
+        "/home/axel/dynabot-ros/install/joystick_control/lib/python3.10/site-packages",
+        "/home/axel/dynabot-ros/install/dynabot_localization/lib/python3.10/site-packages",
+        "/home/axel/dynabot-ros/install/dynabot_lidar/lib/python3.10/site-packages",
+        "/home/axel/dynabot-ros/install/dynabot_imu/lib/python3.10/site-packages",
+        "/home/axel/dynabot-ros/install/dynabot_encoders/lib/python3.10/site-packages",
+        "/home/axel/dynabot-ros/install/dynabot_cv/lib/python3.10/site-packages",
+        "/home/axel/dynabot-ros/install/dynabot_camera/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/axel/dynabot-ros/install/vectornav_msgs/local/lib/python3.10/dist-packages",
+        "/home/axel/dynabot-ros/install/motor_test/lib/python3.10/site-packages",
+        "/home/axel/dynabot-ros/install/motor_control/lib/python3.10/site-packages",
+        "/home/axel/dynabot-ros/install/joystick_control/lib/python3.10/site-packages",
+        "/home/axel/dynabot-ros/install/dynabot_localization/lib/python3.10/site-packages",
+        "/home/axel/dynabot-ros/install/dynabot_lidar/lib/python3.10/site-packages",
+        "/home/axel/dynabot-ros/install/dynabot_imu/lib/python3.10/site-packages",
+        "/home/axel/dynabot-ros/install/dynabot_encoders/lib/python3.10/site-packages",
+        "/home/axel/dynabot-ros/install/dynabot_cv/lib/python3.10/site-packages",
+        "/home/axel/dynabot-ros/install/dynabot_camera/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ]
+}
