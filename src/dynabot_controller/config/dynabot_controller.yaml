@@ -1,0 +1,22 @@
+#ros2 node for controller manager
+controller_manager:
+  ros__parameters:
+    update_rate: 100 # Hz
+
+    joint_state_broadcaster:
+      # From ros2_controllers repo, joint_state_broadcaster pkg
+      type: joint_state_broadcaster/JointStateBroadcaster
+      publish_rate: 100
+
+    simple_velocity_controller:
+      #From ros2_controllers repo, velocity_controllers pkg
+      type: velocity_controllers/JointGroupVelocityController
+
+#ros2 node for velocity controller
+simple_velocity_controller:
+  ros__parameters:
+    joints:
+      - left_wheel_joint
+      - right_wheel_joint
+    
+    
