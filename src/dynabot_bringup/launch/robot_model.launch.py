@@ -1,11 +1,14 @@
 import os
 from launch import LaunchDescription
-from launch_ros.actions import Node
-from launch.actions import IncludeLaunchDescription
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.substitutions import LaunchConfiguration
+from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
+    use_sim_time = LaunchConfiguration('use_sim_time')
+
     # Paths to needed files
     rsp_launch_file = os.path.join(
         get_package_share_directory('dynabot_description'),
@@ -26,38 +29,39 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
-        # Include Robot State Publisher Launch with use_sim_time
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(rsp_launch_file),
-            launch_arguments={'use_sim_time': 'true'}.items()
+        DeclareLaunchArgument(
+            'use_sim_time',
+            default_value='true',
+            description='Use simulation time (Gazebo) or real time'
         ),
 
-        # Launch Joint State Publisher GUI as a Node with sim time
+        IncludeLaunchDescription(
+            PythonLaunchDescriptionSource(rsp_launch_file),
+            launch_arguments={'use_sim_time': use_sim_time}.items()
+        ),
+
         Node(
             package='joint_state_publisher_gui',
             executable='joint_state_publisher_gui',
             name='joint_state_publisher_gui',
             output='screen',
-            parameters=[{'use_sim_time': True}]
+            parameters=[{'use_sim_time': use_sim_time}]
         ),
 
-        # Launch RViz2 as a Node with sim time
         Node(
             package='rviz2',
             executable='rviz2',
             name='rviz2',
             output='screen',
             arguments=['-d', rviz_config_file],
-            parameters=[{'use_sim_time': True}]
+            parameters=[{'use_sim_time': use_sim_time}]
         ),
 
-        # Include Gazebo Launch (Gazebo publishes /clock automatically)
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(gazebo_launch_file),
             launch_arguments={'verbose': 'true'}.items()
         ),
 
-        # Spawn Robot using spawn_entity.py (this node typically doesn't use sim_time)
         Node(
             package='gazebo_ros',
             executable='spawn_entity.py',
