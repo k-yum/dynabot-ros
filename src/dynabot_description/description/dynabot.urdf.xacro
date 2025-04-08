@@ -250,4 +250,36 @@
         <origin xyz="0 0 -0.075" />
     </joint>
 
+    <!--IMU-->
+    <link name="imu">
+        <!--IMU INERTIAL-->
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="0.13" />
+            <inertia ixx="0.0000019" ixy="0.0" ixz="0.0"
+                    iyy="0.0000019" iyz="0.0"
+                    izz="0.0000022" />
+        </inertial>
+        <!--IMU VISUAL-->
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.01 0.01 0.007" />
+            </geometry>
+            <material name="black" />
+        </visual>
+        <!--IMU COLLISION-->
+        <collision>
+            <geometry>
+                <box size="0.01 0.01 0.007" />
+            </geometry>
+        </collision>
+    </link>
+
+    <!--IMU JOINT-->
+    <joint name="imu_joint" type="fixed">
+        <parent link="base_link" />
+        <child link="imu" />
+        <origin xyz="0.658 0 0.2858" rpy="0 0 0" />
+    </joint>
 </robot>
