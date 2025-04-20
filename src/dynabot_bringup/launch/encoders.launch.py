@@ -7,7 +7,7 @@ from launch_ros.actions import Node
 def generate_launch_description():
     # Start the micro-ROS agent (runs continuously)
     micro_ros_agent = ExecuteProcess(
-        cmd=['ros2', 'run', 'micro_ros_agent', 'micro_ros_agent', 'serial', '--dev', '/dev/teensy'],
+        cmd=['ros2', 'run', 'micro_ros_agent', 'micro_ros_agent', 'serial', '--dev', '/dev/serial/by-id/usb-Teensyduino_USB_Serial_16896960-if00'],
         output='screen'
     )
 
