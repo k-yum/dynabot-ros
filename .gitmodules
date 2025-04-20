@@ -2,3 +2,6 @@
 	path = src/vectornav
 	url = https://github.com/axel-ben/vectornav.git
 	branch = ros2
+[submodule "src/dynabot"]
+	path = src/dynabot
+	url = https://github.com/k-yum/dynabot.git
