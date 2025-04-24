@@ -4,7 +4,7 @@
 
 import rclpy
 from rclpy.node import Node
-import serial
+import serial # type: ignore
 import time
 from geometry_msgs.msg import Twist
 
@@ -13,7 +13,8 @@ class MotorPWMController(Node):
         super().__init__('motor_pwm2_controller')
 
         # Connect to Arduino over USB Serial
-        self.serial_port = serial.Serial('/dev/arduino_motor', 115200, timeout=1)
+        self.serial_port = serial.Serial('/dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_5573232313135101E042-if00'
+, 115200, timeout=1)
         # Allow time for Arduino to reset and send its initial READY message
         time.sleep(2)
         self.subscription = self.create_subscription(Twist, '/cmd_vel', self.cmd_vel_callback, 10)
