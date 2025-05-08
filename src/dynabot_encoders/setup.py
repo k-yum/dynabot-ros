@@ -21,7 +21,8 @@ setup(
     entry_points={
         'console_scripts': [
             "odom = dynabot_encoders.odom:main",
-            "reset_encoders = dynabot_encoders.reset_encoders:main"
+            "reset_encoders = dynabot_encoders.reset_encoders:main",
+            "lights = dynabot_encoders.lights:main"
         ],
     },
 )
